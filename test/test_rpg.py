@@ -86,7 +86,16 @@ class TestRpg(unittest.TestCase):
         self.assertGreater(guerrier.get_hp(), 0, "Le guerrier devrait avoir des points de vie restants.")
         self.assertGreater(archer.get_hp(), 0, "L'archer devrait avoir des points de vie restants.")
 
-        def test_mort_et_vivante(self):
+    def test_mort_ou_vivante(self):
+        classes_de_personnage = [Guerrier, Mage, Archer]
+        
+        for Classe in classes_de_personnage:
+            perso = Classe()  
+            self.assertFalse(perso.estMort()) 
+            while not perso.estMort():
+                degats = random.randint(perso.get_degats()[0], perso.get_degats()[1])
+                perso.recevoir_attaque(degats) 
+            self.assertTrue(perso.estMort())   
 
 if __name__ == '__main__':
     unittest.main()
