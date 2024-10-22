@@ -17,7 +17,11 @@ class TestRpg(unittest.TestCase):
         perso.recevoir_attaque(None)
         self.assertEqual(perso.get_hp(),9)
 
-    def test_attaquer_personnage(self)
+    def test_attaquer_personnage(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+        defenseur.recevoir_attaque(attaquant)
+        self.assertEqual(defenseur.get_hp(), 9)
         
        
 
