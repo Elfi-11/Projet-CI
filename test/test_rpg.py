@@ -29,7 +29,7 @@ class TestRpg(unittest.TestCase):
         attaquant = Personnage()
         defenseur = Personnage()
 
-        for i in range(10):
+        for i in range(0,10):
             defenseur.recevoir_attaque(attaquant)
         
         self.assertTrue(defenseur.estMort())
@@ -38,7 +38,7 @@ class TestRpg(unittest.TestCase):
         attaquant = Personnage()
         defenseur = Personnage()
 
-        for i in range(9):  # Correction ici pour ne faire que 9 attaques
+        for i in range(0,9):  
             defenseur.recevoir_attaque(attaquant)
         
         self.assertFalse(defenseur.estMort())
