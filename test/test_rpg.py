@@ -24,8 +24,9 @@ class TestRpg(unittest.TestCase):
         self.assertEqual(defenseur.get_hp(), 9)
 
     def test_pas_mort_avec_plus_de_0_hp(self):
-           
+        perso = Personnage()
+        perso.recevoir_attaque(None)
+        self.assertFalse(perso.estMort())
        
-
 if __name__ == '__main__':
     unittest.main()
