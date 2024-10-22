@@ -1,52 +1,4 @@
-import random  # Importation de la bibliothèque random pour générer des valeurs aléatoires
 
-class Personnage:
-    def __init__(self, hp, degats):
-        self.__hp = hp
-        self.__degats = degats
-
-    def get_hp(self):
-        """Retourne les points de vie actuels du personnage."""
-        return self.__hp
-    
-    def get_degats(self):
-        return self.__degats  # Getter pour les dégâts
-    
-    def recevoir_attaque(self, degats):
-        """Méthode pour gérer les dégâts subis par le personnage lors d'une attaque."""
-        self.__hp -= degats
-        if self.__hp < 0:
-            self.__hp = 0  
-
-    def estMort(self):
-        """Vérifie si le personnage est mort."""
-        return self.__hp == 0 
-
-class Guerrier(Personnage):
-    def __init__(self):
-        super().__init__(hp=15, degats=[1, 3])
-    
-    def attaquer(self, cible):
-        degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1]) 
-        cible.recevoir_attaque(degats_infliges) 
-
-class Mage(Personnage):
-    def __init__(self):
-        super().__init__(hp=8, degats=[2, 4])
-    
-    def attaquer(self, cible):
-        degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1])  
-        cible.recevoir_attaque(degats_infliges) 
-
-class Archer(Personnage):
-    def __init__(self):
-        super().__init__(hp=12, degats=[1, 2])
-    
-    def attaquer(self, cible):
-        degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1])  
-        cible.recevoir_attaque(degats_infliges) 
-
-# Importation des modules nécessaires pour les tests
 import sys
 import os
 
@@ -97,5 +49,7 @@ class TestRpg(unittest.TestCase):
                 perso.recevoir_attaque(degats) 
             self.assertTrue(perso.estMort())   
 
+     def test_recevoir_2_degats_avec_1_hp(self):
+        
 if __name__ == '__main__':
     unittest.main()
