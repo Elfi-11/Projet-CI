@@ -29,6 +29,10 @@ class TestRpg(unittest.TestCase):
         self.assertFalse(perso.estMort())
     
     def test_mort_apres_10_attaques(self):
+        perso = Personnage()
+        for _ in range(10):
+            perso.recevoir_attaque(None)
+        self.assertTrue(perso.estMort())
        
 if __name__ == '__main__':
     unittest.main()
