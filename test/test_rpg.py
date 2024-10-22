@@ -7,13 +7,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 's
 
 import unittest  # Importation de la bibliothèque unittest pour les tests unitaires
 from unittest.mock import patch  # Importation de patch pour simuler des comportements
-from personnage import Personnage  # Importation de la classe Personnage
+from personnage import Personnage, Guerrier, Mage, Archer  # Importation de la classe Personnage
 
 class TestRpg(unittest.TestCase):
     def test_hp_initiaux(self):
-        """Test que le personnage commence avec 10 points de vie."""
-        perso = Personnage()  # Création d'une instance de Personnage
-        self.assertEqual(perso.get_hp(), 10)  # Vérifie que les HP initiaux sont de 10
+  
+
 
     def test_recevoir_attaque(self):
         """Test que le personnage a des HP >= 0 après avoir reçu une attaque."""

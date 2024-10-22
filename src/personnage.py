@@ -1,9 +1,10 @@
 import random  # Importation de la bibliothèque random pour générer des valeurs aléatoires
 
 class Personnage:
-    def __init__(self):
+    def __init__(self,hp , degats):
         # Initialisation des points de vie du personnage à 10
-        self.__hp = 10
+        self.__hp = hp
+        self.__degats = degats
 
     def get_hp(self):
         """Retourne les points de vie actuels du personnage."""
@@ -34,3 +35,16 @@ class Personnage:
             bool: True si le personnage est mort, False sinon.
         """
         return self.__hp == 0  # Retourne True si les HP sont à 0
+
+
+class Guerrier(Personnage):
+    def __init__(self):
+        super().__init__(hp=15, degats=[1, 3])
+
+class Mage(Personnage):
+    def __init__(self):
+        super().__init__(hp=8, degats=[2, 4])
+
+class Archer(Personnage):
+    def __init__(self):
+        super().__init__(hp=10, degats=[1, 2])
