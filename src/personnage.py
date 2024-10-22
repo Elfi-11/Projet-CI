@@ -45,3 +45,18 @@ class Archer(Personnage):
     def attaquer(self, cible):
         degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1])  
         cible.recevoir_attaque(degats_infliges) 
+
+def choisir_classe():
+    """Permet à l'utilisateur de choisir une classe de personnage."""
+    classes_disponibles = {
+        'guerrier': Guerrier,
+        'mage': Mage,
+        'archer': Archer
+    }
+
+    choix = input("Choisissez votre classe (guerrier, mage, archer) : ").lower()
+
+    if choix in classes_disponibles:
+        return classes_disponibles[choix]() 
+    else:
+        raise ValueError("Classe non valide choisie.")

@@ -1,13 +1,14 @@
 
 import sys
 import os
+import random
 
 # Ajout du chemin du répertoire src au chemin système pour pouvoir importer la classe Personnage
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 import unittest  # Importation de la bibliothèque unittest pour les tests unitaires
 from unittest.mock import patch  # Importation de patch pour simuler des comportements
-from personnage import Personnage, Guerrier, Mage, Archer  # Importation de la classe Personnage
+from personnage import Guerrier, Mage, Archer, choisir_classe  # Importation de la classe Personnage
 
 class TestRpg(unittest.TestCase):
     def test_hp_initiaux(self):
@@ -49,7 +50,35 @@ class TestRpg(unittest.TestCase):
                 perso.recevoir_attaque(degats) 
             self.assertTrue(perso.estMort())   
 
-     def test_recevoir_2_degats_avec_1_hp(self):
+    def test_recevoir_2_degats_avec_1_hp(self):
+        classes_de_personnage = [Guerrier, Mage, Archer]
         
+        for Classe in classes_de_personnage:
+            perso = Classe()
+            initial_hp = perso.get_hp() 
+
+            self.assertEqual(initial_hp, perso.get_hp())
+
+            with patch('random.randint', return_value=2): 
+                for _ in range(8):  
+                    perso.recevoir_attaque(2)
+            self.assertEqual(perso.get_hp(), max(0, initial_hp - 16)) 
+            self.assertTrue(perso.estMort())
+
+    @patch('builtins.input', side_effect=['guerrier'])
+    def test_choix_classe_guerrier(self, mock_input):
+        personnage = choisir_classe()
+        self.assertIsInstance(personnage, Guerrier)  # Vérifie que l'instance est un Guerrier
+
+    @patch('builtins.input', side_effect=['mage'])
+    def test_choix_classe_mage(self, mock_input):
+        personnage = choisir_classe()
+        self.assertIsInstance(personnage, Mage)  # Vérifie que l'instance est un Mage
+
+    @patch('builtins.input', side_effect=['archer'])
+    def test_choix_classe_archer(self, mock_input):
+        personnage = choisir_classe()
+        self.assertIsInstance(personnage, Archer)
+
 if __name__ == '__main__':
     unittest.main()
