@@ -1,7 +1,7 @@
 import random  # Importation de la bibliothèque random pour générer des valeurs aléatoires
 
 class Personnage:
-    def __init__(self,hp , degats):
+    def __init__(self,hp, degats):
         # Initialisation des points de vie du personnage à 10
         self.__hp = hp
         self.__degats = degats
@@ -47,4 +47,4 @@ class Mage(Personnage):
 
 class Archer(Personnage):
     def __init__(self):
-        super().__init__(hp=10, degats=[1, 2])
+        super().__init__(hp=12, degats=[1, 2])
