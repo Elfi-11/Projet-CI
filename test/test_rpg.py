@@ -16,6 +16,9 @@ class TestRpg(unittest.TestCase):
         perso = Personnage()
         perso.recevoir_attaque(None)
         self.assertEqual(perso.get_hp(),9)
+
+    def test_attaquer_personnage(self)
+        
        
 
 if __name__ == '__main__':
