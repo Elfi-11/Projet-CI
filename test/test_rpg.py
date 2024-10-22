@@ -9,7 +9,10 @@ from personnage import Personnage
 
 class TestRpg(unittest.TestCase):
     def test_hp_initiaux(self):
-        test à définir
+        perso = Personnage()
+        self.assertEqual(perso.get_hp(),10)
+
+
        
 
 if __name__ == '__main__':
