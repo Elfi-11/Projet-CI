@@ -86,5 +86,7 @@ class TestRpg(unittest.TestCase):
         self.assertGreater(guerrier.get_hp(), 0, "Le guerrier devrait avoir des points de vie restants.")
         self.assertGreater(archer.get_hp(), 0, "L'archer devrait avoir des points de vie restants.")
 
+        def test_mort_et_vivante(self):
+
 if __name__ == '__main__':
     unittest.main()
