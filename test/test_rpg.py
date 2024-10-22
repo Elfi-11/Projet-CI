@@ -35,6 +35,8 @@ class TestRpg(unittest.TestCase):
         initial_hp = perso.get_hp()
         perso.recevoir_attaque(None)
         self.assertIn(initial_hp - perso.get_hp(), [1, 2])
+
+    def test_recevoir_2_degats_avec_1_hp(self):
        
 if __name__ == '__main__':
     unittest.main()
