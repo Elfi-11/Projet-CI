@@ -18,5 +18,24 @@ class TestRpg(unittest.TestCase):
         self.assertEqual(mage.get_hp(), 8)
         self.assertEqual(archer.get_hp(), 12)
 
+
+    def test_recevoir_attaque(self):
+        guerrier = Guerrier()
+        mage = Mage()
+        archer = Archer()
+
+        guerrier.attaquer(mage)  
+        self.assertGreater(mage.get_hp(), 0)
+        guerrier.attaquer(archer) 
+        self.assertGreater(archer.get_hp(), 0)
+        mage.attaquer(guerrier)
+        self.assertGreater(guerrier.get_hp(), 0)
+        mage.attaquer(archer) 
+        self.assertGreater(archer.get_hp(), 0)
+        archer.attaquer(guerrier) 
+        self.assertGreater(guerrier.get_hp(), 0)
+        archer.attaquer(mage) 
+        self.assertGreater(mage.get_hp(), 0)
+
 if __name__ == '__main__':
     unittest.main()
