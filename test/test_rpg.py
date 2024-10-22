@@ -12,7 +12,10 @@ class TestRpg(unittest.TestCase):
         perso = Personnage()
         self.assertEqual(perso.get_hp(),10)
 
-
+    def test_recevoir_attaque(self):
+        perso = Personnage()
+        perso.recevoir_attaque(None)
+        self.assertEqual(perso.get_hp(),9)
        
 
 if __name__ == '__main__':
