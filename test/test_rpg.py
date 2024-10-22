@@ -5,6 +5,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 import unittest
+from unittest.mock import patch
 from personnage import Personnage
 
 class TestRpg(unittest.TestCase):
@@ -37,6 +38,16 @@ class TestRpg(unittest.TestCase):
         self.assertIn(initial_hp - perso.get_hp(), [1, 2])
 
     def test_recevoir_2_degats_avec_1_hp(self):
+        perso = Personnage ()
+        for _ in range(9):
+            with patch('random.random', return_value=0.6):
+                perso.recevoir_attaque(None)
+        self.assertEqual(perso.get_hp(), 1)
+        with patch('random.random', return_value=0.4):  
+            perso.recevoir_attaque(None)
+        self.assertEqual(perso.get_hp(), 0)
+        self.assertTrue(perso.estMort())
+
        
 if __name__ == '__main__':
     unittest.main()
