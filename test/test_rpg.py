@@ -32,6 +32,8 @@ class TestRpg(unittest.TestCase):
         self.assertEqual(perso.get_hp(), 1)
         perso.recevoir_attaque(None)
         self.assertTrue(perso.estMort())
+    
+    def test_potion(self):
        
 if __name__ == '__main__':
     unittest.main()
