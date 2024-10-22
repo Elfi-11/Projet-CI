@@ -22,7 +22,9 @@ class TestRpg(unittest.TestCase):
         defenseur = Personnage()
         defenseur.recevoir_attaque(attaquant)
         self.assertEqual(defenseur.get_hp(), 9)
-        
+
+    def test_pas_mort_avec_plus_de_0_hp(self):
+           
        
 
 if __name__ == '__main__':
