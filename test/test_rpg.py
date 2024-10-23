@@ -44,7 +44,18 @@ class TestRpg(unittest.TestCase):
         self.assertFalse(defenseur.estMort())
 
     def test_attaquer_plus_de_10_fois(self):
-        test à ecrire
+        attaquant = Personnage()
+        defenseur = Personnage()
+
+        for i in range(0, 12):  # On attaque 12 fois
+            defenseur.recevoir_attaque(attaquant)
+
+    # Vérifier que les HP sont bien à -2 après 12 attaques
+        self.assertEqual(-2, defenseur.get_hp())
+
+    # Vérifier que le personnage est considéré comme mort (il a 0 HP ou moins)
+        self.assertTrue(defenseur.get_hp() <= 0) 
+
 
 if __name__ == '__main__':
     unittest.main()
