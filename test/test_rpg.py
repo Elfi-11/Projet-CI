@@ -56,6 +56,16 @@ class TestRpg(unittest.TestCase):
     # Vérifier que le personnage est considéré comme mort (il a 0 HP ou moins)
         self.assertTrue(defenseur.get_hp() <= 0) 
 
+    def test_attaquer_3_fois_ne_tue_pas(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+
+        for i in range(0, 3):
+            defenseur.recevoir_attaque(attaquant)
+        
+        self.assertEqual(7, defenseur.get_hp())
+        self.assertFalse(defenseur.estMort())
+
 
 if __name__ == '__main__':
     unittest.main()
