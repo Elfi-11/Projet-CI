@@ -43,5 +43,8 @@ class TestRpg(unittest.TestCase):
         
         self.assertFalse(defenseur.estMort())
 
+    def test_attaquer_plus_de_10_fois(self):
+        test à ecrire
+
 if __name__ == '__main__':
     unittest.main()
