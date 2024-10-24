@@ -24,7 +24,7 @@ class TestRpg(unittest.TestCase):
         defenseur = Personnage()
 
         for i in range(0,10):
-            defenseur.recevoir_attaque456464(attaquant)
+            defenseur.recevoir_attaque(attaquant)
         
         self.assertTrue(defenseur.estMort())
     
