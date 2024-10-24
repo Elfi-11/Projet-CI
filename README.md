@@ -27,7 +27,7 @@ perdre de temps là dessus et les workflows sont configurés dans des fichiers Y
 
 
 *Inconvénient : 
-- 1 : Est payant pour les gros projets ;
-- 2 : Compléxicités des workflows dans le cas de gros projets, car si complexes peuvent être difficiles à lire, en effet
+- 1 : Est payant pour les gros projets en cas que notre projet grossisse.
+- 2 : Compléxicités des workflows dans le cas de gros projets, (encore une fois dans le cas ou il devrait grossir) car si complexes peuvent être difficiles à lire, en effet
 l'utilisation se fait par un seul fichier Yaml.
-- 3 : Support limité, on s'enferme dans la lofique git hub. 
+- 3 : Support limité, on s'enferme dans la logique git hub. 
