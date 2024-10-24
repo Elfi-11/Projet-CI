@@ -10,3 +10,6 @@ class Personnage:
 
     def estMort(self):
         return self.__hp == 0
+    
+    def reset_hp(self):
+        self.__hp = 10
