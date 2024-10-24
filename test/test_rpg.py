@@ -40,9 +40,11 @@ class TestRpg(unittest.TestCase):
     def test_reset_pv(self):
         defenseur = Personnage()
         attaquant = Personnage()
-        defenseur.recevoir_attaque(attaquant, 10)
 
-        self.assertFalse(defenseur.estMort())
+        for _ in range(0,10):
+            defenseur.recevoir_attaque(attaquant)
+
+        self.assertTrue(defenseur.estMort())
 
         defenseur.reset_hp()
         self.assertEqual(defenseur.get_hp(), 10)
