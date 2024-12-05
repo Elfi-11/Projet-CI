@@ -2,7 +2,7 @@ import random
 
 class Personnage:
     def __init__(self, hp, degats):
-        #self.hp = hp
+        self.hp = hp
         self._degats = degats  # Attribut protégé
 
     def get_hp(self):
