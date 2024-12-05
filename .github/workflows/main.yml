@@ -1,0 +1,58 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python (ou Node, Java, etc. selon votre stack)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest tests/ # Modifier selon votre suite de tests
+
+    outputs:
+      build-success: ${{ steps.run-tests.outcome == 'success' }}
+
+  handle-success:
+    needs: build-and-test
+    if: ${{ success() }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fast-forward master
+        run: |
+          git fetch origin
+          git checkout master
+          git merge --ff-only dev
+          git push origin master
+
+  handle-failure:
+    needs: build-and-test
+    if: ${{ failure() }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Reset failed commit and create failure branch
+        run: |
+          git fetch origin
+          git checkout dev
+          git reset --hard HEAD~1
+          git branch failures/$(date +%s)
+          git push origin failures/$(date +%s)
+          git push origin --force dev
