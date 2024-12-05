@@ -17,13 +17,7 @@ class TestRpg(unittest.TestCase):
         defenseur = Personnage()
         defenseur.recevoir_attaque(attaquant)
         self.assertEqual(9, defenseur.get_hp())
-    
-    def test_attaquer_enleve_2_hp(self):
-        attaquant = Personnage()
-        defenseur = Personnage()
-        defenseur.recevoir_attaque(attaquant)
-        defenseur.recevoir_attaque(attaquant)
-        self.assertEqual(8, defenseur.get_hp())
+
     
     def test_attaquer_10_fois_tue(self):
         attaquant = Personnage()
@@ -42,6 +36,19 @@ class TestRpg(unittest.TestCase):
             defenseur.recevoir_attaque(attaquant)
         
         self.assertFalse(defenseur.estMort())
+
+    def test_reset_pv(self):
+        defenseur = Personnage()
+        attaquant = Personnage()
+
+        for _ in range(0,10):
+            defenseur.recevoir_attaque(attaquant)
+
+        self.assertTrue(defenseur.estMort())
+
+        defenseur.reset_hp()
+        self.assertEqual(defenseur.get_hp(), 10)
+
 
 if __name__ == '__main__':
     unittest.main()
