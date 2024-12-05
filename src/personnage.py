@@ -1,5 +1,7 @@
+import random
+
 class Personnage:
-    def init(self, hp, degats):
+    def __init__(self, hp, degats):
         self.hp = hp
         self._degats = degats  # Attribut protégé
 
@@ -21,24 +23,24 @@ class Personnage:
         return self.hp == 0 
 
 class Guerrier(Personnage):
-    def init(self):
-        super().init(hp=15, degats=[1, 3])
+    def __init__(self):
+        super().__init__(hp=15, degats=[1, 3])
 
     def attaquer(self, cible):
         degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1]) 
         cible.recevoir_attaque(degats_infliges) 
 
 class Mage(Personnage):
-    def init(self):
-        super().init(hp=8, degats=[2, 4])
+    def __init__(self):
+        super().__init__(hp=8, degats=[2, 4])
 
     def attaquer(self, cible):
         degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1])
         cible.recevoir_attaque(degats_infliges) 
 
 class Archer(Personnage):
-    def init(self):
-        super().init(hp=12, degats=[1, 2])
+    def __init__(self):
+        super().__init__(hp=12, degats=[1, 2])
 
     def attaquer(self, cible):
         degats_infliges = random.randint(self.get_degats()[0], self.get_degats()[1])
